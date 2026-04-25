@@ -14,6 +14,7 @@ public:
 	Player() { mLives = 3; }
 	virtual ~Player() {}
 
+
 	void OnWorldUpdated(GameWorld* world) {}
 
 	void OnObjectAdded(GameWorld* world, shared_ptr<GameObject> object) {}
@@ -25,7 +26,7 @@ public:
 			FirePlayerKilled();
 		}
 	}
-
+	void ResetLives() { mLives = 3; }
 	void AddListener(shared_ptr<IPlayerListener> listener)
 	{
 		mListeners.push_back(listener);

@@ -2,7 +2,6 @@
 #define __SCOREKEEPER_H__
 
 #include "GameUtil.h"
-
 #include "GameObject.h"
 #include "GameObjectType.h"
 #include "IScoreListener.h"
@@ -20,7 +19,7 @@ public:
 	void OnObjectRemoved(GameWorld* world, shared_ptr<GameObject> object)
 	{
 		if (object->GetType() == GameObjectType("Asteroid")) {
- 			mScore += 10;
+			mScore += 10;
 			FireScoreChanged();
 		}
 	}
@@ -32,17 +31,21 @@ public:
 
 	void FireScoreChanged()
 	{
-		// Send message to all listeners
 		for (ScoreListenerList::iterator lit = mListeners.begin(); lit != mListeners.end(); ++lit) {
 			(*lit)->OnScoreChanged(mScore);
 		}
+	}
+
+	void ResetScore()
+	{
+		mScore = 0;
+		FireScoreChanged();
 	}
 
 private:
 	int mScore;
 
 	typedef std::list< shared_ptr<IScoreListener> > ScoreListenerList;
-
 	ScoreListenerList mListeners;
 };
 

@@ -1,4 +1,4 @@
-#ifndef __ASTEROIDS_H__
+А#ifndef __ASTEROIDS_H__
 #define __ASTEROIDS_H__
 
 #include "GameUtil.h"
@@ -14,37 +14,51 @@ class GameObject;
 class Spaceship;
 class GUILabel;
 
-class Asteroids : public GameSession, public IKeyboardListener, public IGameWorldListener, public IScoreListener, public IPlayerListener
+struct HighScoreEntry {
+	std::string name;
+	int score;
+};
+
+enum GameState {
+	STATE_MENU,
+	STATE_INSTRUCTIONS,
+	STATE_HIGHSCORES,
+	STATE_PLAYING,
+	STATE_ENTER_NAME,
+	STATE_GAME_OVER
+};
+
+enum MenuItem {
+	MENU_START = 0,
+	MENU_DIFFICULTY = 1,
+	MENU_INSTRUCTIONS = 2,
+	MENU_HIGHSCORES = 3,
+	MENU_COUNT = 4
+};
+
+class Asteroids : public GameSession, public IKeyboardListener,
+	public IGameWorldListener, public IScoreListener,
+	public IPlayerListener
 {
 public:
-	Asteroids(int argc, char *argv[]);
+	Asteroids(int argc, char* argv[]);
 	virtual ~Asteroids(void);
 
 	virtual void Start(void);
 	virtual void Stop(void);
-
-	// Declaration of IKeyboardListener interface ////////////////////////////////
 
 	void OnKeyPressed(uchar key, int x, int y);
 	void OnKeyReleased(uchar key, int x, int y);
 	void OnSpecialKeyPressed(int key, int x, int y);
 	void OnSpecialKeyReleased(int key, int x, int y);
 
-	// Declaration of IScoreListener interface //////////////////////////////////
-
 	void OnScoreChanged(int score);
-
-	// Declaration of the IPlayerLister interface //////////////////////////////
-
 	void OnPlayerKilled(int lives_left);
-
-	// Declaration of IGameWorldListener interface //////////////////////////////
 
 	void OnWorldUpdated(GameWorld* world) {}
 	void OnObjectAdded(GameWorld* world, shared_ptr<GameObject> object) {}
 	void OnObjectRemoved(GameWorld* world, shared_ptr<GameObject> object);
 
-	// Override the default implementation of ITimerListener ////////////////////
 	void OnTimer(int value);
 
 private:
@@ -52,16 +66,43 @@ private:
 	shared_ptr<GUILabel> mScoreLabel;
 	shared_ptr<GUILabel> mLivesLabel;
 	shared_ptr<GUILabel> mGameOverLabel;
+	shared_ptr<GUILabel> mTitleLabel;
+	shared_ptr<GUILabel> mSubtitleLabel;
+	shared_ptr<GUILabel> mMenuItemLabels[4];
+	shared_ptr<GUILabel> mInfoLabels[8];
 
 	uint mLevel;
 	uint mAsteroidCount;
 
+	GameState mGameState;
+	int mSelectedMenuItem;
+	bool mDifficultyEnabled;
+
+	static const int MAX_HIGH_SCORES = 5;
+	HighScoreEntry mHighScores[MAX_HIGH_SCORES];
+	int mHighScoreCount;
+	int mCurrentScore;
+	std::string mEnteredName;
+
+	void StartGame();
 	void ResetSpaceship();
 	shared_ptr<GameObject> CreateSpaceship();
 	void CreateGUI();
 	void CreateAsteroids(const uint num_asteroids);
 	shared_ptr<GameObject> CreateExplosion();
-	
+
+	void ShowMenu();
+	void ShowInstructions();
+	void ShowHighScores();
+	void ShowEnterName();
+	void AddHighScore(const std::string& name, int score);
+	void SaveHighScores();
+	void LoadHighScores();
+	void UpdateMenuLabel();
+	void UpdateHighScoreLabel();
+	void HideAllInfoLabels();
+	void HideMenuLabels();
+
 	const static uint SHOW_GAME_OVER = 0;
 	const static uint START_NEXT_LEVEL = 1;
 	const static uint CREATE_NEW_PLAYER = 2;

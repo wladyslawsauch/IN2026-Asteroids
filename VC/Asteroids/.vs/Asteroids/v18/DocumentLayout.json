@@ -1,0 +1,420 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\VC\\Asteroids\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{97AF88B3-4E3C-43B5-8770-C655BCAAB734}|Asteroids.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\src\\Asteroids.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97AF88B3-4E3C-43B5-8770-C655BCAAB734}|Asteroids.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\src\\Asteroids.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\src\\GUIComponent.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\src\\GUIComponent.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\Src\\Animation.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97AF88B3-4E3C-43B5-8770-C655BCAAB734}|Asteroids.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Asteroid.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\src\\GameDisplay.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97AF88B3-4E3C-43B5-8770-C655BCAAB734}|Asteroids.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\src\\Bullet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97AF88B3-4E3C-43B5-8770-C655BCAAB734}|Asteroids.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\src\\Bullet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\Src\\AnimationManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\Src\\GameObjectType.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\src\\GlutWindow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\src\\GlutSession.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\src\\GlutSession.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\src\\GameWorld.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\Src\\BoundingShape.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\Src\\Animation.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97AF88B3-4E3C-43B5-8770-C655BCAAB734}|Asteroids.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\src\\GUIContainer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\src\\GUILabel.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\src\\GUILabel.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97AF88B3-4E3C-43B5-8770-C655BCAAB734}|Asteroids.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\ScoreKeeper.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97AF88B3-4E3C-43B5-8770-C655BCAAB734}|Asteroids.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Asteroid.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A573C32D-8F4C-442B-84A7-287D28FFA333}|..\\Engine\\Engine.vcxproj|C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\src\\GameWorld.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppBuild.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GUIComponent.h",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GUIComponent.h",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\GUIComponent.h",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GUIComponent.h",
+              "RelativeToolTip": "..\\..\\SRC\\GUIComponent.h",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAADsAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-25T21:18:21.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Bullet.h",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Bullet.h",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\Bullet.h",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Bullet.h",
+              "RelativeToolTip": "..\\..\\SRC\\Bullet.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-25T21:06:57.366Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Bullet.cpp",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Bullet.cpp",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\Bullet.cpp",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Bullet.cpp",
+              "RelativeToolTip": "..\\..\\SRC\\Bullet.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-25T21:06:53.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GameDisplay.cpp",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GameDisplay.cpp",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\GameDisplay.cpp",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GameDisplay.cpp",
+              "RelativeToolTip": "..\\..\\SRC\\GameDisplay.cpp",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-25T21:06:51.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Asteroids.cpp",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Asteroids.cpp",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\Asteroids.cpp",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Asteroids.cpp",
+              "RelativeToolTip": "..\\..\\SRC\\Asteroids.cpp",
+              "ViewState": "AgIAAAsCAAAAAAAAAAAwwC8CAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-25T20:08:04.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Asteroids.h",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Asteroids.h",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\Asteroids.h",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Asteroids.h",
+              "RelativeToolTip": "..\\..\\SRC\\Asteroids.h",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAswHEAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-25T20:07:31.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GUIComponent.cpp",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GUIComponent.cpp",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\GUIComponent.cpp",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GUIComponent.cpp",
+              "RelativeToolTip": "..\\..\\SRC\\GUIComponent.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-25T21:21:13.323Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Asteroid.cpp",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Asteroid.cpp",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\Asteroid.cpp",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Asteroid.cpp",
+              "RelativeToolTip": "..\\..\\SRC\\Asteroid.cpp",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAABEAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-25T20:56:35.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Animation.h",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Animation.h",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\Animation.h",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Animation.h",
+              "RelativeToolTip": "..\\..\\SRC\\Animation.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-25T21:06:42.467Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AnimationManager.h",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\AnimationManager.h",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\AnimationManager.h",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\AnimationManager.h",
+              "RelativeToolTip": "..\\..\\SRC\\AnimationManager.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-25T21:06:51.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GameObjectType.cpp",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GameObjectType.cpp",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\GameObjectType.cpp",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GameObjectType.cpp",
+              "RelativeToolTip": "..\\..\\SRC\\GameObjectType.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-25T21:06:50.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "GlutWindow.h",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GlutWindow.h",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\GlutWindow.h",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GlutWindow.h",
+              "RelativeToolTip": "..\\..\\SRC\\GlutWindow.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-25T21:06:49.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "GlutSession.h",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GlutSession.h",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\GlutSession.h",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GlutSession.h",
+              "RelativeToolTip": "..\\..\\SRC\\GlutSession.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-25T21:06:49.201Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "GlutSession.cpp",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GlutSession.cpp",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\GlutSession.cpp",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GlutSession.cpp",
+              "RelativeToolTip": "..\\..\\SRC\\GlutSession.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-25T21:06:48.563Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "GameWorld.cpp",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GameWorld.cpp",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\GameWorld.cpp",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GameWorld.cpp",
+              "RelativeToolTip": "..\\..\\SRC\\GameWorld.cpp",
+              "ViewState": "AgIAANIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-25T21:06:44.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "BoundingShape.h",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\BoundingShape.h",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\BoundingShape.h",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\BoundingShape.h",
+              "RelativeToolTip": "..\\..\\SRC\\BoundingShape.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-25T21:06:43.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Animation.cpp",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Animation.cpp",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\Animation.cpp",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Animation.cpp",
+              "RelativeToolTip": "..\\..\\SRC\\Animation.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-25T21:06:41.179Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Player.h",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Player.h",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\Player.h",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Player.h",
+              "RelativeToolTip": "..\\..\\SRC\\Player.h",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAwB8AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-25T21:02:51.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "GUIContainer.cpp",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GUIContainer.cpp",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\GUIContainer.cpp",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GUIContainer.cpp",
+              "RelativeToolTip": "..\\..\\SRC\\GUIContainer.cpp",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAwDwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-25T20:52:54.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "GUILabel.h",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GUILabel.h",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\GUILabel.h",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GUILabel.h",
+              "RelativeToolTip": "..\\..\\SRC\\GUILabel.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-25T20:52:11.239Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "GUILabel.cpp",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GUILabel.cpp",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\GUILabel.cpp",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GUILabel.cpp",
+              "RelativeToolTip": "..\\..\\SRC\\GUILabel.cpp",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAwDQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-25T20:52:04.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "GameWorld.h",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GameWorld.h",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\GameWorld.h",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\GameWorld.h",
+              "RelativeToolTip": "..\\..\\SRC\\GameWorld.h",
+              "ViewState": "AgIAADIAAAAAAAAAAAAQwEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-25T20:10:25.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ScoreKeeper.h",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\ScoreKeeper.h",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\ScoreKeeper.h",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\ScoreKeeper.h",
+              "RelativeToolTip": "..\\..\\SRC\\ScoreKeeper.h",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAwDMAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-25T20:41:26.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Asteroid.h",
+              "DocumentMoniker": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Asteroid.h",
+              "RelativeDocumentMoniker": "..\\..\\SRC\\Asteroid.h",
+              "ToolTip": "C:\\Users\\saukh\\Desktop\\IN2026 Coursework Code\\SRC\\Asteroid.h",
+              "RelativeToolTip": "..\\..\\SRC\\Asteroid.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-25T20:07:18.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Microsoft.CppBuild.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppBuild.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppBuild.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppBuild.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppBuild.targets",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAOEBAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-04-25T20:02:18.647Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

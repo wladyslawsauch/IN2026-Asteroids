@@ -1,1 +1,15 @@
-﻿
+﻿cl : командная строка  warning D9035: использование параметра "Gm" нежелательно, он будет удален в следующих выпусках
+  Asteroids.cpp
+  Создание кода...
+  Пропуск... (изменения не обнаружены)
+  main.cpp
+Asteroid.obj : warning LNK4075: не учитывается "/EDITANDCONTINUE" из-за спецификации "/SAFESEH"
+  Asteroids.vcxproj -> C:\Users\saukh\Desktop\IN2026 Coursework Code\bin\Asteroids.exe
+  ..\..\assets\asteroid.shape
+  ..\..\assets\asteroid1_fs.png
+  ..\..\assets\bullet.shape
+  ..\..\assets\explosion_fs.png
+  ..\..\assets\spaceship.shape
+  ..\..\assets\spaceship_fs.png
+  ..\..\assets\thruster.shape
+  Скопировано файлов:         7.
