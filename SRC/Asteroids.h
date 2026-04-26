@@ -1,4 +1,4 @@
-А#ifndef __ASTEROIDS_H__
+#ifndef __ASTEROIDS_H__
 #define __ASTEROIDS_H__
 
 #include "GameUtil.h"
@@ -17,6 +17,7 @@ class GUILabel;
 struct HighScoreEntry {
 	std::string name;
 	int score;
+	HighScoreEntry() : score(0) {}
 };
 
 enum GameState {
@@ -70,6 +71,7 @@ private:
 	shared_ptr<GUILabel> mSubtitleLabel;
 	shared_ptr<GUILabel> mMenuItemLabels[4];
 	shared_ptr<GUILabel> mInfoLabels[8];
+	shared_ptr<GUILabel> mPowerUpLabel;
 
 	uint mLevel;
 	uint mAsteroidCount;
@@ -77,6 +79,7 @@ private:
 	GameState mGameState;
 	int mSelectedMenuItem;
 	bool mDifficultyEnabled;
+	bool mMenuAsteroidsCreated;
 
 	static const int MAX_HIGH_SCORES = 5;
 	HighScoreEntry mHighScores[MAX_HIGH_SCORES];
@@ -84,12 +87,27 @@ private:
 	int mCurrentScore;
 	std::string mEnteredName;
 
+	int mExtraLives;
+	std::vector<weak_ptr<GameObject>> mBackgroundAsteroids;
+	void RemoveBackgroundAsteroids();
+
+	std::vector<weak_ptr<GameObject>> mGameAsteroids;
+	void RemoveGameAsteroids();
+	std::vector<weak_ptr<GameObject>> mPowerUpObjects;
+	void RemovePowerUps();
+
+	bool IsSpaceshipAlive();
 	void StartGame();
 	void ResetSpaceship();
 	shared_ptr<GameObject> CreateSpaceship();
 	void CreateGUI();
 	void CreateAsteroids(const uint num_asteroids);
+	void CreateBackgroundAsteroids(const uint num_asteroids);
 	shared_ptr<GameObject> CreateExplosion();
+	void SpawnPowerUps();
+	void CreateExtraLife();
+	void CreateInvulnerability();
+	void CreateWeaponUpgrade();
 
 	void ShowMenu();
 	void ShowInstructions();
@@ -106,6 +124,7 @@ private:
 	const static uint SHOW_GAME_OVER = 0;
 	const static uint START_NEXT_LEVEL = 1;
 	const static uint CREATE_NEW_PLAYER = 2;
+	const static uint SPAWN_POWERUPS = 3;
 
 	ScoreKeeper mScoreKeeper;
 	Player mPlayer;

@@ -6,101 +6,179 @@
 
 using namespace std;
 
-// PUBLIC INSTANCE CONSTRUCTORS ///////////////////////////////////////////////
-
-/**  Default constructor. */
 Spaceship::Spaceship()
-	: GameObject("Spaceship"), mThrust(0)
+	: GameObject("Spaceship"), mThrust(0),
+	mInvulnerable(false), mInvulnerabilityTimer(0),
+	mWeaponUpgrade(false), mWeaponUpgradeTimer(0),
+	mCanShoot(true), mShootCooldown(0)
 {
 }
 
-/** Construct a spaceship with given position, velocity, acceleration, angle, and rotation. */
 Spaceship::Spaceship(GLVector3f p, GLVector3f v, GLVector3f a, GLfloat h, GLfloat r)
-	: GameObject("Spaceship", p, v, a, h, r), mThrust(0)
+	: GameObject("Spaceship", p, v, a, h, r), mThrust(0),
+	mInvulnerable(false), mInvulnerabilityTimer(0),
+	mWeaponUpgrade(false), mWeaponUpgradeTimer(0),
+	mCanShoot(true), mShootCooldown(0)
 {
 }
 
-/** Copy constructor. */
 Spaceship::Spaceship(const Spaceship& s)
-	: GameObject(s), mThrust(0)
+	: GameObject(s), mThrust(0),
+	mInvulnerable(false), mInvulnerabilityTimer(0),
+	mWeaponUpgrade(false), mWeaponUpgradeTimer(0),
+	mCanShoot(true), mShootCooldown(0)
 {
 }
 
-/** Destructor. */
 Spaceship::~Spaceship(void)
 {
 }
 
-// PUBLIC INSTANCE METHODS ////////////////////////////////////////////////////
-
-/** Update this spaceship. */
-void Spaceship::Update(int t)
+void Spaceship::Reset(void)
 {
-	// Call parent update function
-	GameObject::Update(t);
+	// Call parent reset
+	GameObject::Reset();
+	// Reset thrust and powerups
+	mThrust = 0;
+	mInvulnerable = false;
+	mInvulnerabilityTimer = 0;
+	mWeaponUpgrade = false;
+	mWeaponUpgradeTimer = 0;
+
+	mCanShoot = true;
+	mShootCooldown = 0;
 }
 
-/** Render this spaceship. */
+void Spaceship::Update(int t)
+{
+	GameObject::Update(t);
+
+	// Count down invulnerability timer
+	if (mInvulnerable)
+	{
+		mInvulnerabilityTimer -= t;
+		if (mInvulnerabilityTimer <= 0)
+		{
+			mInvulnerable = false;
+			mInvulnerabilityTimer = 0;
+		}
+	}
+
+	// Count down weapon upgrade timer
+	if (mWeaponUpgrade)
+	{
+		mWeaponUpgradeTimer -= t;
+		if (mWeaponUpgradeTimer <= 0)
+		{
+			mWeaponUpgrade = false;
+			mWeaponUpgradeTimer = 0;
+		}
+	}
+
+	if (!mCanShoot)
+	{
+		mShootCooldown -= t;
+		if (mShootCooldown <= 0)
+		{
+			mCanShoot = true;
+			mShootCooldown = 0;
+		}
+	}
+}
+
 void Spaceship::Render(void)
 {
 	if (mSpaceshipShape.get() != NULL) mSpaceshipShape->Render();
 
-	// If ship is thrusting
-	if ((mThrust > 0) && (mThrusterShape.get() != NULL)) {
+	if ((mThrust > 0) && (mThrusterShape.get() != NULL))
 		mThrusterShape->Render();
-	}
 
 	GameObject::Render();
 }
 
-/** Fire the rockets. */
 void Spaceship::Thrust(float t)
 {
 	mThrust = t;
-	// Increase acceleration in the direction of ship
-	mAcceleration.x = mThrust*cos(DEG2RAD*mAngle);
-	mAcceleration.y = mThrust*sin(DEG2RAD*mAngle);
+	mAcceleration.x = mThrust * cos(DEG2RAD * mAngle);
+	mAcceleration.y = mThrust * sin(DEG2RAD * mAngle);
 }
 
-/** Set the rotation. */
 void Spaceship::Rotate(float r)
 {
 	mRotation = r;
 }
 
-/** Shoot a bullet. */
 void Spaceship::Shoot(void)
 {
-	// Check the world exists
+
+	if (!mCanShoot) return;
+	mCanShoot = false;
+	mShootCooldown = 300;
 	if (!mWorld) return;
-	// Construct a unit length vector in the direction the spaceship is headed
-	GLVector3f spaceship_heading(cos(DEG2RAD*mAngle), sin(DEG2RAD*mAngle), 0);
-	spaceship_heading.normalize();
-	// Calculate the point at the node of the spaceship from position and heading
-	GLVector3f bullet_position = mPosition + (spaceship_heading * 4);
-	// Calculate how fast the bullet should travel
+
+	GLVector3f heading(cos(DEG2RAD * mAngle), sin(DEG2RAD * mAngle), 0);
+	heading.normalize();
+	GLVector3f bullet_position = mPosition + (heading * 4);
 	float bullet_speed = 30;
-	// Construct a vector for the bullet's velocity
-	GLVector3f bullet_velocity = mVelocity + spaceship_heading * bullet_speed;
-	// Construct a new bullet
-	shared_ptr<GameObject> bullet
-		(new Bullet(bullet_position, bullet_velocity, mAcceleration, mAngle, 0, 2000));
+	GLVector3f bullet_velocity = mVelocity + heading * bullet_speed;
+
+	// Normal bullet
+	shared_ptr<GameObject> bullet(
+		new Bullet(bullet_position, bullet_velocity, mAcceleration, mAngle, 0, 2000));
 	bullet->SetBoundingShape(make_shared<BoundingSphere>(bullet->GetThisPtr(), 2.0f));
 	bullet->SetShape(mBulletShape);
-	// Add the new bullet to the game world
 	mWorld->AddObject(bullet);
 
+	// Weapon upgrade - shoot 2 extra bullets at angles
+	if (mWeaponUpgrade)
+	{
+		float angles[2] = { mAngle + 15.0f, mAngle - 15.0f };
+		for (int i = 0; i < 2; i++)
+		{
+			GLVector3f h2(cos(DEG2RAD * angles[i]), sin(DEG2RAD * angles[i]), 0);
+			h2.normalize();
+			GLVector3f bp2 = mPosition + (h2 * 4);
+			GLVector3f bv2 = mVelocity + h2 * bullet_speed;
+			shared_ptr<GameObject> b2(
+				new Bullet(bp2, bv2, mAcceleration, angles[i], 0, 2000));
+			b2->SetBoundingShape(make_shared<BoundingSphere>(b2->GetThisPtr(), 2.0f));
+			b2->SetShape(mBulletShape);
+			mWorld->AddObject(b2);
+		}
+	}
+}
+
+void Spaceship::ActivateInvulnerability(int duration_ms)
+{
+	mInvulnerable = true;
+	mInvulnerabilityTimer = duration_ms;
+}
+
+void Spaceship::ActivateWeaponUpgrade(int duration_ms)
+{
+	mWeaponUpgrade = true;
+	mWeaponUpgradeTimer = duration_ms;
 }
 
 bool Spaceship::CollisionTest(shared_ptr<GameObject> o)
 {
 	if (o->GetType() != GameObjectType("Asteroid")) return false;
+	if (mInvulnerable) return false;
 	if (mBoundingShape.get() == NULL) return false;
 	if (o->GetBoundingShape().get() == NULL) return false;
 	return mBoundingShape->CollisionTest(o->GetBoundingShape());
 }
 
-void Spaceship::OnCollision(const GameObjectList &objects)
+void Spaceship::OnCollision(const GameObjectList& objects)
 {
-	mWorld->FlagForRemoval(GetThisPtr());
+	// Only die if collided with an asteroid
+	for (GameObjectList::const_iterator it = objects.begin();
+		it != objects.end(); ++it)
+	{
+		if ((*it)->GetType() == GameObjectType("Asteroid"))
+		{
+			mWorld->FlagForRemoval(GetThisPtr());
+			return;
+		}
+	}
 }

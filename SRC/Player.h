@@ -31,6 +31,7 @@ public:
 	{
 		mListeners.push_back(listener);
 	}
+	void AddLife() { mLives++; }
 
 	void FirePlayerKilled()
 	{

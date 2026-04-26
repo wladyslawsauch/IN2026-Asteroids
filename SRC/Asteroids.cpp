@@ -1,5 +1,7 @@
+#include <vector>
 #include "Asteroid.h"
 #include "Asteroids.h"
+#include "BackgroundAsteroid.h"
 #include "Animation.h"
 #include "AnimationManager.h"
 #include "GameUtil.h"
@@ -11,11 +13,21 @@
 #include "BoundingSphere.h"
 #include "GUILabel.h"
 #include "Explosion.h"
+#include "ExtraLife.h"
+#include "Invulnerability.h"
+#include "WeaponUpgrade.h"
 #include <fstream>
 
 Asteroids::Asteroids(int argc, char* argv[])
 	: GameSession(argc, argv)
+
+
 {
+	for (int i = 0; i < MAX_HIGH_SCORES; i++)
+	{
+		mHighScores[i].score = 0;
+		mHighScores[i].name = "";
+	}
 	mLevel = 0;
 	mAsteroidCount = 0;
 	mGameState = STATE_MENU;
@@ -23,6 +35,8 @@ Asteroids::Asteroids(int argc, char* argv[])
 	mDifficultyEnabled = true;
 	mHighScoreCount = 0;
 	mCurrentScore = 0;
+	mExtraLives = 0;
+	mMenuAsteroidsCreated = false;
 }
 
 Asteroids::~Asteroids(void)
@@ -82,6 +96,45 @@ void Asteroids::HideMenuLabels()
 		mMenuItemLabels[i]->SetVisible(false);
 }
 
+bool Asteroids::IsSpaceshipAlive()
+{
+	return mSpaceship && mSpaceship->GetWorld() != NULL;
+}
+
+void Asteroids::RemoveBackgroundAsteroids()
+{
+	for (uint i = 0; i < mBackgroundAsteroids.size(); i++)
+	{
+		shared_ptr<GameObject> obj = mBackgroundAsteroids[i].lock();
+		if (obj && obj->GetWorld() != NULL)
+			mGameWorld->FlagForRemoval(weak_ptr<GameObject>(obj));
+	}
+	mBackgroundAsteroids.clear();
+	mMenuAsteroidsCreated = false;
+}
+
+void Asteroids::RemoveGameAsteroids()
+{
+	for (uint i = 0; i < mGameAsteroids.size(); i++)
+	{
+		shared_ptr<GameObject> obj = mGameAsteroids[i].lock();
+		if (obj && obj->GetWorld() != NULL)
+			mGameWorld->FlagForRemoval(weak_ptr<GameObject>(obj));
+	}
+	mGameAsteroids.clear();
+}
+
+
+void Asteroids::RemovePowerUps()
+{
+	for (uint i = 0; i < mPowerUpObjects.size(); i++)
+	{
+		shared_ptr<GameObject> obj = mPowerUpObjects[i].lock();
+		if (obj && obj->GetWorld() != NULL)
+			mGameWorld->FlagForRemoval(weak_ptr<GameObject>(obj));
+	}
+	mPowerUpObjects.clear();
+}
 // =========================================================
 // MENU & STATE METHODS
 // =========================================================
@@ -90,15 +143,16 @@ void Asteroids::ShowMenu()
 {
 	mGameState = STATE_MENU;
 
-	if (mAsteroidCount < 3)
+	if (!mMenuAsteroidsCreated)
 	{
-		mAsteroidCount = 0;
-		CreateAsteroids(3);
+		CreateBackgroundAsteroids(5);
+		mMenuAsteroidsCreated = true;
 	}
 
 	mScoreLabel->SetVisible(false);
 	mLivesLabel->SetVisible(false);
 	mGameOverLabel->SetVisible(false);
+	mPowerUpLabel->SetVisible(false);
 	HideAllInfoLabels();
 
 	mTitleLabel->SetVisible(true);
@@ -187,6 +241,7 @@ void Asteroids::ShowEnterName()
 	mScoreLabel->SetVisible(false);
 	mLivesLabel->SetVisible(false);
 	mGameOverLabel->SetVisible(false);
+	mPowerUpLabel->SetVisible(false);
 	mAsteroidCount = 0;
 
 	HideAllInfoLabels();
@@ -253,22 +308,84 @@ void Asteroids::LoadHighScores()
 
 void Asteroids::StartGame()
 {
+	// Remove background asteroids,real asteroids and powersups before starting
+	RemoveBackgroundAsteroids();
+	RemoveGameAsteroids();
+	RemovePowerUps();
+
 	mGameState = STATE_PLAYING;
 	mLevel = 0;
 	mAsteroidCount = 0;
-
+	mExtraLives = 0;
+	mScoreKeeper.SetScoreEnabled(true);
 	HideMenuLabels();
 	HideAllInfoLabels();
 
 	mPlayer.ResetLives();
 	mScoreKeeper.ResetScore();
 	mScoreLabel->SetText("Score: 0");
+	mScoreLabel->SetText("Score: 0");
 	mScoreLabel->SetVisible(true);
 	mLivesLabel->SetText("Lives: 3");
 	mLivesLabel->SetVisible(true);
+	mPowerUpLabel->SetText("");
+	mPowerUpLabel->SetVisible(true);
 
 	mGameWorld->AddObject(CreateSpaceship());
 	CreateAsteroids(10);
+
+	if (mDifficultyEnabled)
+		SetTimer(10000, SPAWN_POWERUPS);
+}
+
+// =========================================================
+// POWERUP SPAWN METHODS
+// =========================================================
+
+void Asteroids::SpawnPowerUps()
+{
+	if (mGameState != STATE_PLAYING) return;
+	if (!mDifficultyEnabled) return;
+
+	int roll = rand() % 3;
+	if (roll == 0) CreateExtraLife();
+	else if (roll == 1) CreateInvulnerability();
+	else CreateWeaponUpgrade();
+
+	SetTimer(15000, SPAWN_POWERUPS);
+}
+
+void Asteroids::CreateExtraLife()
+{
+	shared_ptr<GameObject> powerup = make_shared<ExtraLife>();
+	powerup->SetBoundingShape(make_shared<BoundingSphere>(powerup->GetThisPtr(), 4.0f));
+	shared_ptr<Shape> shape = make_shared<Shape>("extralife.shape");
+	powerup->SetShape(shape);
+	powerup->SetScale(1.0f);
+	mGameWorld->AddObject(powerup);
+	mPowerUpObjects.push_back(weak_ptr<GameObject>(powerup));
+}
+
+void Asteroids::CreateInvulnerability()
+{
+	shared_ptr<GameObject> powerup = make_shared<Invulnerability>();
+	powerup->SetBoundingShape(make_shared<BoundingSphere>(powerup->GetThisPtr(), 4.0f));
+	shared_ptr<Shape> shape = make_shared<Shape>("invulnerability.shape");
+	powerup->SetShape(shape);
+	powerup->SetScale(1.0f);
+	mGameWorld->AddObject(powerup);
+	mPowerUpObjects.push_back(weak_ptr<GameObject>(powerup));
+}
+
+void Asteroids::CreateWeaponUpgrade()
+{
+	shared_ptr<GameObject> powerup = make_shared<WeaponUpgrade>();
+	powerup->SetBoundingShape(make_shared<BoundingSphere>(powerup->GetThisPtr(), 4.0f));
+	shared_ptr<Shape> shape = make_shared<Shape>("weaponupgrade.shape");
+	powerup->SetShape(shape);
+	powerup->SetScale(1.0f);
+	mGameWorld->AddObject(powerup);
+	mPowerUpObjects.push_back(weak_ptr<GameObject>(powerup));
 }
 
 // =========================================================
@@ -326,7 +443,8 @@ void Asteroids::OnKeyPressed(uchar key, int x, int y)
 
 	if (mGameState == STATE_PLAYING)
 	{
-		if (key == ' ') mSpaceship->Shoot();
+		if (key == ' ' && IsSpaceshipAlive())
+			mSpaceship->Shoot();
 	}
 }
 
@@ -344,7 +462,7 @@ void Asteroids::OnSpecialKeyPressed(int key, int x, int y)
 		return;
 	}
 
-	if (mGameState == STATE_PLAYING)
+	if (mGameState == STATE_PLAYING && IsSpaceshipAlive())
 	{
 		switch (key)
 		{
@@ -358,7 +476,7 @@ void Asteroids::OnSpecialKeyPressed(int key, int x, int y)
 
 void Asteroids::OnSpecialKeyReleased(int key, int x, int y)
 {
-	if (mGameState == STATE_PLAYING)
+	if (mGameState == STATE_PLAYING && IsSpaceshipAlive())
 	{
 		switch (key)
 		{
@@ -389,6 +507,34 @@ void Asteroids::OnObjectRemoved(GameWorld* world, shared_ptr<GameObject> object)
 		if (mAsteroidCount <= 0 && mGameState == STATE_PLAYING)
 			SetTimer(500, START_NEXT_LEVEL);
 	}
+
+	if (object->GetType() == GameObjectType("ExtraLife"))
+	{
+		if (mGameState != STATE_PLAYING) return;
+		mExtraLives++;
+		mPlayer.AddLife();
+		std::ostringstream ss;
+		ss << "Lives: " << (3 + mExtraLives);
+		mLivesLabel->SetText(ss.str());
+		mPowerUpLabel->SetText("+ EXTRA LIFE!");
+		SetTimer(2000, 10);
+	}
+
+	if (object->GetType() == GameObjectType("Invulnerability"))
+	{
+		if (mGameState != STATE_PLAYING || !IsSpaceshipAlive()) return;
+		mSpaceship->ActivateInvulnerability(5000);
+		mPowerUpLabel->SetText("** INVULNERABLE! **");
+		SetTimer(2000, 10);
+	}
+
+	if (object->GetType() == GameObjectType("WeaponUpgrade"))
+	{
+		if (mGameState != STATE_PLAYING || !IsSpaceshipAlive()) return;
+		mSpaceship->ActivateWeaponUpgrade(10000);
+		mPowerUpLabel->SetText("*** TRIPLE SHOT! ***");
+		SetTimer(2000, 10);
+	}
 }
 
 // =========================================================
@@ -399,18 +545,31 @@ void Asteroids::OnTimer(int value)
 {
 	if (value == CREATE_NEW_PLAYER)
 	{
-		mSpaceship->Reset();
-		mGameWorld->AddObject(mSpaceship);
+		mGameWorld->AddObject(CreateSpaceship());
 	}
 	if (value == START_NEXT_LEVEL)
 	{
 		mLevel++;
 		int num_asteroids = 10 + 2 * mLevel;
 		CreateAsteroids(num_asteroids);
+		if (mDifficultyEnabled)
+			SetTimer(5000, SPAWN_POWERUPS);
 	}
 	if (value == SHOW_GAME_OVER)
 	{
 		ShowEnterName();
+	}
+	if (value == SPAWN_POWERUPS)
+	{
+		SpawnPowerUps();
+	}
+	if (value == 10)
+	{
+		mPowerUpLabel->SetText("");
+	}
+	if (value == 20)
+	{
+		mScoreKeeper.SetScoreEnabled(true);
 	}
 }
 
@@ -447,6 +606,25 @@ void Asteroids::CreateAsteroids(const uint num_asteroids)
 		asteroid->SetSprite(asteroid_sprite);
 		asteroid->SetScale(0.2f);
 		mGameWorld->AddObject(asteroid);
+		mGameAsteroids.push_back(weak_ptr<GameObject>(asteroid));
+	}
+}
+
+void Asteroids::CreateBackgroundAsteroids(const uint num_asteroids)
+{
+	for (uint i = 0; i < num_asteroids; i++)
+	{
+		Animation* anim_ptr = AnimationManager::GetInstance().GetAnimationByName("asteroid1");
+		shared_ptr<Sprite> asteroid_sprite =
+			make_shared<Sprite>(anim_ptr->GetWidth(), anim_ptr->GetHeight(), anim_ptr);
+		asteroid_sprite->SetLoopAnimation(true);
+		shared_ptr<GameObject> asteroid = make_shared<BackgroundAsteroid>();
+		asteroid->SetBoundingShape(make_shared<BoundingSphere>(asteroid->GetThisPtr(), 10.0f));
+		asteroid->SetSprite(asteroid_sprite);
+		asteroid->SetScale(0.2f);
+		mGameWorld->AddObject(asteroid);
+		// Save weak pointer so we can remove them later
+		mBackgroundAsteroids.push_back(weak_ptr<GameObject>(asteroid));
 	}
 }
 
@@ -475,6 +653,13 @@ void Asteroids::CreateGUI()
 	mGameOverLabel->SetVisible(false);
 	mGameDisplay->GetContainer()->AddComponent(
 		static_pointer_cast<GUIComponent>(mGameOverLabel), GLVector2f(0.5f, 0.5f));
+
+	// Powerup notification label
+	mPowerUpLabel = make_shared<GUILabel>("");
+	mPowerUpLabel->SetHorizontalAlignment(GUIComponent::GUI_HALIGN_CENTER);
+	mPowerUpLabel->SetVisible(false);
+	mGameDisplay->GetContainer()->AddComponent(
+		static_pointer_cast<GUIComponent>(mPowerUpLabel), GLVector2f(0.5f, 0.75f));
 
 	// Title
 	mTitleLabel = make_shared<GUILabel>("=== SPACE DEFENDER ===");
@@ -532,6 +717,10 @@ void Asteroids::OnScoreChanged(int score)
 
 void Asteroids::OnPlayerKilled(int lives_left)
 {
+	// Disable scoring briefly when player dies
+	mScoreKeeper.SetScoreEnabled(false);
+	SetTimer(100, 20);
+
 	shared_ptr<GameObject> explosion = CreateExplosion();
 	explosion->SetPosition(mSpaceship->GetPosition());
 	explosion->SetRotation(mSpaceship->GetRotation());

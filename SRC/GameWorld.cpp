@@ -84,6 +84,15 @@ void GameWorld::FlagForRemoval(weak_ptr<GameObject> ptr)
 	mGameObjectsToRemove.push_back(ptr);
 }
 
+void GameWorld::FlagAllForRemoval()
+{
+	for (GameObjectList::iterator it = mGameObjects.begin();
+		it != mGameObjects.end(); ++it)
+	{
+		mGameObjectsToRemove.push_back(*it);
+	}
+}
+
 /** Remove a game object from the world. */
 void GameWorld::RemoveObject(shared_ptr<GameObject> ptr)
 {

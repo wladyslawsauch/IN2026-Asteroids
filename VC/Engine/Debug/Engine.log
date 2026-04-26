@@ -1,27 +1,3 @@
 ﻿cl : командная строка  warning D9035: использование параметра "Gm" нежелательно, он будет удален в следующих выпусках
-  TextureManager.cpp
-  Texture.cpp
-  Sprite.cpp
-  Shape.cpp
-  MovementController.cpp
-  ImageManager.cpp
-  Image.cpp
-  GUILabel.cpp
-  GUIIcon.cpp
-  GUIContainer.cpp
-  GUIComponent.cpp
-  GLVector.cpp
-  GlutWindow.cpp
-  GlutSession.cpp
   GameWorld.cpp
-  GameWindow.cpp
-  GameSession.cpp
-  GameObjectType.cpp
-  GameObject.cpp
-  GameDisplay.cpp
-  Создание кода...
-  Компиляция...
-  AnimationManager.cpp
-  Animation.cpp
-  Создание кода...
   Engine.vcxproj -> C:\Users\saukh\Desktop\IN2026 Coursework Code\lib\Engine.lib

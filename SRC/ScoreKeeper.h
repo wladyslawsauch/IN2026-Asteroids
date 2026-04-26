@@ -10,7 +10,7 @@
 class ScoreKeeper : public IGameWorldListener
 {
 public:
-	ScoreKeeper() { mScore = 0; }
+	ScoreKeeper() { mScore = 0; mScoreEnabled = false; }
 	virtual ~ScoreKeeper() {}
 
 	void OnWorldUpdated(GameWorld* world) {}
@@ -18,6 +18,7 @@ public:
 
 	void OnObjectRemoved(GameWorld* world, shared_ptr<GameObject> object)
 	{
+		if (!mScoreEnabled) return;
 		if (object->GetType() == GameObjectType("Asteroid")) {
 			mScore += 10;
 			FireScoreChanged();
@@ -31,19 +32,24 @@ public:
 
 	void FireScoreChanged()
 	{
-		for (ScoreListenerList::iterator lit = mListeners.begin(); lit != mListeners.end(); ++lit) {
-			(*lit)->OnScoreChanged(mScore);
+		ScoreListenerList copy = mListeners;
+		for (ScoreListenerList::iterator lit = copy.begin();
+			lit != copy.end(); ++lit)
+		{
+			if (*lit) (*lit)->OnScoreChanged(mScore);
 		}
 	}
 
 	void ResetScore()
 	{
 		mScore = 0;
-		FireScoreChanged();
 	}
+
+	void SetScoreEnabled(bool enabled) { mScoreEnabled = enabled; }
 
 private:
 	int mScore;
+	bool mScoreEnabled;
 
 	typedef std::list< shared_ptr<IScoreListener> > ScoreListenerList;
 	ScoreListenerList mListeners;
